@@ -39,10 +39,10 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          githubToken: ${{ secrets.DEPLOYMENT_TOKEN }}
-          projectName: ${{ inputs.PROJECT_NAME }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: karangsuci-landing-cms-dev
           directory: dist
-          branch: ${{ inputs.BRANCH }}
+          branch: ${{ github.ref_name }}
           wranglerVersion: '3'
 
       - name: Log to Discords
