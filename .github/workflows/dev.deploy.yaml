@@ -34,12 +34,16 @@ jobs:
         run: yarn build      
 
       - name: Publish to Cloudflare Pages
-        id: deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: AdrianGonz97/refined-cf-pages-action@v1
+        id: publish_cf_pages
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .vercel/output/static --project-name=karangsuci-landing-cms-dev --commit-dirty=true
+          githubToken: ${{ secrets.DEPLOYMENT_TOKEN }}
+          projectName: ${{ inputs.PROJECT_NAME }}
+          directory: dist
+          branch: ${{ inputs.BRANCH }}
+          wranglerVersion: '3'
 
       - name: Log to Discords
         uses: appleboy/discord-action@master
@@ -48,4 +52,4 @@ jobs:
           avatar_url: 'https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png'
           webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
           webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
-          message: '**${{ github.event.repository.name }}** has been deployed to *Cloudflare Pages* from branch **${{ github.ref_name }}**. Deployed URL: ${{ steps.deploy.outputs.deployment-url }}'
+          message: '**${{ github.event.repository.name }}** has been deployed to *Cloudflare Pages* from branch **${{ github.ref_name }}**. Deployed URL: ${{ steps.publish_cf_pages.outputs.url }}'
