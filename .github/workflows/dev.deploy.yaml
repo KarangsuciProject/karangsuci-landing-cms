@@ -37,7 +37,7 @@ jobs:
         uses: AdrianGonz97/refined-cf-pages-action@v1
         id: publish_cf_pages
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: karangsuci-landing-cms-dev
