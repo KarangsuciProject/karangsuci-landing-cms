@@ -30,24 +30,8 @@ jobs:
       - name: Run eslint
         run: yarn lint
 
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: actions-${{ runner.os }}-dist-${{ github.sha }}
-      #     path: ./vercel/output/static
-
-  # deploy:
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Download Artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: actions-${{ runner.os }}-dist-${{ github.sha }}
-  #         path: ./vercel/output/static
-
       - name: Build
-        run: yarn pages:build
+        run: yarn build      
 
       - name: Publish to Cloudflare Pages
         id: deploy
