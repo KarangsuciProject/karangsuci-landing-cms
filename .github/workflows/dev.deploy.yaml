@@ -1,0 +1,67 @@
+name: Deploy Dev to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+        
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        # with:
+          # submodules: 'recursive'
+          # token: '${{ secrets.DEPLOYMENT_TOKEN }}'
+          # persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          always-auth: true
+          node-version: 18.20.0
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tsc
+        run: yarn tsc
+
+      - name: Run eslint
+        run: yarn lint
+
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: actions-${{ runner.os }}-dist-${{ github.sha }}
+      #     path: ./vercel/output/static
+
+  # deploy:
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download Artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: actions-${{ runner.os }}-dist-${{ github.sha }}
+  #         path: ./vercel/output/static
+
+      - name: Build
+        run: yarn pages:build
+
+      - name: Publish to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .vercel/output/static --project-name=karangsuci-landing-cms-dev --commit-dirty=true
+
+      - name: Log to Discords
+        uses: appleboy/discord-action@master
+        with:
+          username: 'GitHub Bot'
+          avatar_url: 'https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png'
+          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+          message: '**${{ github.event.repository.name }}** has been deployed to *Cloudflare Pages* from branch **${{ github.ref_name }}**. Deployed URL: ${{ steps.deploy.outputs.deployment-url }}'
