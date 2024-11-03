@@ -1,11 +1,28 @@
-import './App.css'
+import { useEffect, useState } from "react";
 
-function App() {
+import { supabase } from "./utils";
+
+function Page() {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    async function getTodos() {
+      const { data: todos } = await supabase.from("todos").select();
+
+      if (todos?.length ?? 0 > 1) {
+        setTodos(todos as never);
+      }
+    }
+
+    getTodos();
+  }, []);
+
   return (
-    <>
-      <h1>Welcome</h1>
-    </>
-  )
+    <div>
+      {todos.map((todo) => (
+        <li key={todo}>{todo}</li>
+      ))}
+    </div>
+  );
 }
-
-export default App
+export default Page;
