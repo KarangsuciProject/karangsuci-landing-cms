@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { supabase } from "./utils";
+import { supabase } from "../../utils";
 
 function Page() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     async function getTodos() {
-      const { data: todos } = await supabase.from("todos").select();
+      const { data: todos } = await supabase.from("landing_contents").select();
 
       if (todos?.length ?? 0 > 1) {
         setTodos(todos as never);
