@@ -1,22 +1,8 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import { ExampleContainer } from "../containers";
+import { LoginPageContainer } from '../containers';
 
 const Router = createBrowserRouter([
-  {
-    element: (
-      //   <PublicRoute  />
-      <Outlet />
-    ),
-    // errorElement: <ErrorBoundary />,
-    children: [
-      {
-        path: "Example",
-        Component: ExampleContainer,
-        // errorElement: <ErrorBoundary />,
-      },
-    ],
-  },
   {
     element: (
       // <ProtectedRoute />,
@@ -25,8 +11,8 @@ const Router = createBrowserRouter([
     // errorElement: <ErrorBoundary />,
     children: [
       {
-        path: "/",
-        Component: ExampleContainer,
+        path: 'login',
+        Component: LoginPageContainer,
         // errorElement: <ErrorBoundary />,
       },
     ],
