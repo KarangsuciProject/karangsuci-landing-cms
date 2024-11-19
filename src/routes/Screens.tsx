@@ -5,7 +5,7 @@ import { LoginPageContainer } from '../containers';
 const Router = createBrowserRouter([
   {
     element: (
-      // <ProtectedRoute />,
+      //   <PublicRoute  />
       <Outlet />
     ),
     // errorElement: <ErrorBoundary />,
@@ -13,6 +13,19 @@ const Router = createBrowserRouter([
       {
         path: 'login',
         Component: LoginPageContainer,
+        // errorElement: <ErrorBoundary />,
+      },
+    ],
+  },
+  {
+    element: (
+      // <ProtectedRoute />,
+      <Outlet />
+    ),
+    // errorElement: <ErrorBoundary />,
+    children: [
+      {
+        path: '/',
         // errorElement: <ErrorBoundary />,
       },
     ],

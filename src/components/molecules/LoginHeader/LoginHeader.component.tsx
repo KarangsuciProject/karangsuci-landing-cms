@@ -1,6 +1,6 @@
 import { Title, Logo } from '../../atoms';
 
-function LoginHeaderComponent() {
+const LoginHeaderComponent = () => {
   return (
     <div>
       <Logo />
@@ -11,6 +11,6 @@ function LoginHeaderComponent() {
       />
     </div>
   );
-}
+};
 
 export default LoginHeaderComponent;
