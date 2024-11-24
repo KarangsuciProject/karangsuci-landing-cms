@@ -1,6 +1,6 @@
 import { Grid2 as Grid } from '@mui/material';
 
-import { LeftSide, RightSide } from '../../components/organism';
+import { LeftSide, RightSide } from '../../components';
 
 const LoginPage = () => {
   return (

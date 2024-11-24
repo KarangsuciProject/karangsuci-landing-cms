@@ -1,17 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { HTMLAttributes } from 'react';
-
 import { ComponentConstants } from '../../../constants';
 
 const {
-  TITLE: { VARIANTS },
+  BUTTON: { VARIANTS },
 } = ComponentConstants;
 
-export type Props = React.DetailedHTMLProps<
-  HTMLAttributes<HTMLHeadingElement>,
-  HTMLHeadingElement
-> & {
+export type Props = {
   items: string;
   type?: (typeof VARIANTS)[keyof typeof VARIANTS];
 };
