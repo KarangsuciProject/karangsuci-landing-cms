@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { ComponentConstants } from '../../../constants';
 
-const {
-  INPUT: { VARIANTS },
-} = ComponentConstants;
-
 export type Props = {
-  type?: (typeof VARIANTS)[keyof typeof VARIANTS];
+  type?: (typeof ComponentConstants.INPUT.VARIANTS)[keyof typeof ComponentConstants.INPUT.VARIANTS];
+};
+
+export type StyleParamProps = {
+  type: string;
+  showPassword: boolean;
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
 };

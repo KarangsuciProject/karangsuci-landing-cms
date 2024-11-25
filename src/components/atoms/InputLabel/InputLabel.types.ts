@@ -1,12 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { ComponentConstants } from '../../../constants';
-
-const {
-  INPUT_LABEL: { VARIANTS },
-} = ComponentConstants;
 
 export type Props = {
   items: string;
-  type?: (typeof VARIANTS)[keyof typeof VARIANTS];
+  type?: (typeof ComponentConstants.INPUT_LABEL.VARIANTS)[keyof typeof ComponentConstants.INPUT_LABEL.VARIANTS];
 };

@@ -1,23 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
-// const { palette } = createTheme();
-// const { augmentColor } = palette;
-// const createColor = (customColor: string) =>
-//   augmentColor({ color: { main: customColor } });
+import { palette } from '../constants';
 
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2E7D32',
+      main: palette.primary.main,
     },
     secondary: {
-      main: '#00A765',
+      main: palette.secondary.main,
     },
   },
   typography: {
     fontFamily: [
-      'Inter Tight',
+      'Work Sans',
       'Inter',
       'system-ui',
       'Avenir',

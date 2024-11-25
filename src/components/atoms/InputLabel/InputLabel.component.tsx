@@ -1,6 +1,6 @@
 import { InputLabel } from '@mui/material';
 
-import { Props } from './InputLabel.types';
+import type { Props } from './InputLabel.types';
 import { styleConfig } from './InputLabel.config';
 
 const InputLabelComponent = ({ type = 'regular', items }: Props) => {

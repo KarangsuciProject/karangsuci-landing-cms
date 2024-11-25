@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 
-import { Props } from './Button.types';
+import type { Props } from './Button.types';
 import { styleConfig } from './Button.config';
 
 const ButtonComponent = ({ items, type = 'regular' }: Props) => {

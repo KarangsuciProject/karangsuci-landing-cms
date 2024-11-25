@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 
-import { Props } from './Input.types';
+import type { Props } from './Input.types';
 import { styleConfig } from './Input.config';
 
 const InputComponent = ({ type = 'regular' }: Props) => {
