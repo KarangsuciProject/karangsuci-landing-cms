@@ -5,7 +5,7 @@ import {
   InputLabelComponent,
 } from '../../atoms';
 
-const LoginFormComponent = (props: Props) => {
+const LoginFormComponent = () => {
   return (
     <form className="flex flex-col space-y-6">
       <div className="flex flex-col space-y-1">
@@ -15,7 +15,7 @@ const LoginFormComponent = (props: Props) => {
       <div className="flex flex-col space-y-1">
         <InputLabelComponent type="password" items="Password" />
         <InputComponent type="password" />
-        <CheckboxComponent type="rememberEmail" />
+        <CheckboxComponent items="Ingat Email" type="rememberEmail" />
       </div>
       <ButtonComponent items="Masuk" type="loginBtn" />
     </form>

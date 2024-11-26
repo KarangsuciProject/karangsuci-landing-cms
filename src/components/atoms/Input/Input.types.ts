@@ -1,11 +1,11 @@
 import { ComponentConstants } from '../../../constants';
 
-export type Props = {
+export type ComponentProps = {
   type?: (typeof ComponentConstants.INPUT.VARIANTS)[keyof typeof ComponentConstants.INPUT.VARIANTS];
 };
 
 export type StyleParamProps = {
-  type: string;
+  type: ComponentProps['type'];
   showPassword: boolean;
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
 };

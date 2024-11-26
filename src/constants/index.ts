@@ -1,2 +1,2 @@
 export * as ComponentConstants from './Component.constants';
-export * from './palette';
+export * as PaletteConstant from './palette';

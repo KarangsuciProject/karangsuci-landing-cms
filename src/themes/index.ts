@@ -1,20 +1,22 @@
 import { createTheme } from '@mui/material/styles';
 
-import { palette } from '../constants';
+import { PaletteConstant } from '../constants';
+
+const { primary, secondary } = PaletteConstant.colors;
 
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: palette.primary.main,
+      main: primary.main,
     },
     secondary: {
-      main: palette.secondary.main,
+      main: secondary.main,
     },
   },
   typography: {
     fontFamily: [
-      'Work Sans',
+      'Outfit',
       'Inter',
       'system-ui',
       'Avenir',

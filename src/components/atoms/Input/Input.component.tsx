@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 
-import type { Props } from './Input.types';
+import type { ComponentProps } from './Input.types';
 import { styleConfig } from './Input.config';
 
-const InputComponent = ({ type = 'regular' }: Props) => {
+const InputComponent = ({ type = 'regular' }: ComponentProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const styleParam = {

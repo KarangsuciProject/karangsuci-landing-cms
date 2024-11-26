@@ -1,4 +1,5 @@
 import { InputAdornment } from '@mui/material';
+import type { TextFieldProps } from '@mui/material';
 import {
   EnvelopeIcon,
   KeyIcon,
@@ -12,7 +13,7 @@ const styleConfig = ({
   type,
   showPassword,
   setShowPassword,
-}: StyleParamProps) => {
+}: StyleParamProps): TextFieldProps | undefined => {
   switch (type) {
     case 'regular':
       return {
@@ -71,9 +72,6 @@ const styleConfig = ({
           },
         },
       };
-
-    default:
-      break;
   }
 };
 

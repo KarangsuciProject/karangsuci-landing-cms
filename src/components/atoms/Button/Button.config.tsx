@@ -1,4 +1,6 @@
-const styleConfig = {
+import { styleConfigProps } from './Button.types';
+
+const styleConfig: styleConfigProps = {
   regular: {
     variant: 'contained',
     color: 'primary',
