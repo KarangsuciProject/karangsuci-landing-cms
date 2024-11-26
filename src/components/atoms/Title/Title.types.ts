@@ -2,14 +2,10 @@ import { HTMLAttributes } from 'react';
 
 import { ComponentConstants } from '../../../constants';
 
-const {
-  TITLE: { VARIANTS },
-} = ComponentConstants;
-
 export type Props = React.DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 > & {
   items: string;
-  type?: (typeof VARIANTS)[keyof typeof VARIANTS];
+  type?: (typeof ComponentConstants.TITLE.VARIANTS)[keyof typeof ComponentConstants.TITLE.VARIANTS];
 };
