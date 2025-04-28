@@ -19,6 +19,18 @@ const styleConfig = ({
       return {
         label: 'Outlined',
         variant: 'outlined',
+        slotProps: {
+          input: {
+            sx: {
+              fontSize: {
+                xs: '14px',
+                sm: '16px',
+                md: '18px',
+                lg: '20px',
+              },
+            },
+          },
+        },
       };
 
     case 'email':
@@ -30,6 +42,14 @@ const styleConfig = ({
         size: 'small',
         slotProps: {
           input: {
+            sx: {
+              fontSize: {
+                xs: '14px',
+                sm: '16px',
+                md: '18px',
+                lg: '20px',
+              },
+            },
             startAdornment: (
               <InputAdornment position="start">
                 <EnvelopeIcon className="size-5" />
@@ -49,6 +69,14 @@ const styleConfig = ({
         size: 'small',
         slotProps: {
           input: {
+            sx: {
+              fontSize: {
+                xs: '14px',
+                sm: '16px',
+                md: '18px',
+                lg: '20px',
+              },
+            },
             startAdornment: (
               <InputAdornment position="start">
                 <KeyIcon className="size-5" />
