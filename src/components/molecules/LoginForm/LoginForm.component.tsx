@@ -7,7 +7,7 @@ import {
 
 const LoginFormComponent = () => {
   return (
-    <form className="flex flex-col space-y-6">
+    <form className="flex flex-col space-y-2 lg:space-y-6">
       <div className="flex flex-col space-y-1">
         <InputLabelComponent type="email" items="Email" />
         <InputComponent type="email" />
