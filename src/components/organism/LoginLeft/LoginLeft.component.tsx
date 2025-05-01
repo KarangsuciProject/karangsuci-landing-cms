@@ -2,8 +2,8 @@ import { Images } from '../../../assets';
 
 function LoginLeftComponent() {
   return (
-    <div className="h-full pt-2 pl-2 pb-2 rounded-tl-lg rounded-bl-lg shadow-md bg-[#EDF2F7]">
-      <div className="h-full rounded-lg bg-[#276749]">
+    <div className="hidden md:block w-full basis-[48rem] p-2 pr-0 rounded-tl-xl rounded-bl-xl bg-whiteBg">
+      <div className="h-full rounded-lg bg-darkGreen">
         <div
           style={{
             backgroundImage: `url(${Images.default.Background})`,

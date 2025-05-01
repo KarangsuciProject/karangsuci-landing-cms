@@ -3,10 +3,10 @@ const styleConfig = {
     className: 'font-bold',
   },
   email: {
-    className: 'text-sm font-bold',
+    className: 'text-xs md:text-sm lg:text-base font-bold',
   },
   password: {
-    className: 'text-sm font-bold',
+    className: 'text-xs md:text-sm lg:text-base font-bold',
   },
 };
 
