@@ -45,3 +45,5 @@ const INPUT_LABEL_VARIANTS = {
 export const INPUT_LABEL = {
   VARIANTS: INPUT_LABEL_VARIANTS,
 };
+
+export const DRAWER_WIDTH = 240 as const;
