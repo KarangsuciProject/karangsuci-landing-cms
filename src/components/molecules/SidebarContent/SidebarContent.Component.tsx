@@ -1,5 +1,4 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
-
 import { Box, Divider, IconButton, Typography } from '@mui/material';
 
 import SidebarNavigation from './SidebarNavigation';
