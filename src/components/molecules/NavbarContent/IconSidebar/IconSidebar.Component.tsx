@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
+
 import Props from './IconSidebar.types';
 
 const IconSidebar = ({
