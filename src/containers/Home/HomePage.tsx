@@ -1,15 +1,20 @@
+import { Typography } from '@mui/material';
+
+import { Title } from '../../components/atoms';
+
+import { styleConfig } from './HomePage.styles';
+
 function HomePage() {
   return (
-    <div className="flex flex-col gap-5">
-      <h1 className="text-3xl">Dasboard</h1>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quia
-        consectetur dolores! Inventore, obcaecati. Facilis amet voluptatibus
-        fugit impedit commodi sequi consequatur accusamus dolores, velit quis
-        eaque. Autem, illo ea?
-      </p>
-    </div>
+    <section className={styleConfig.homepageContainer}>
+      <Title items="Dashboard" type="dashboardTitle" />
+      <Typography variant="body1">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo quaerat
+        saepe suscipit, eveniet ipsum dolor ullam nihil impedit. Consequatur
+        cupiditate repudiandae dolorem doloremque rerum, deleniti optio sequi
+        blanditiis odit minus!
+      </Typography>
+    </section>
   );
 }
 export default HomePage;
