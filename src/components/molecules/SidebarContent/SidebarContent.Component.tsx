@@ -1,7 +1,9 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
+
 import { Box, Divider, IconButton, Typography } from '@mui/material';
-import { Props } from './SidebarContent.types';
+
 import SidebarNavigation from './SidebarNavigation';
+import { Props } from './SidebarContent.types';
 
 const SidebarContent = ({
   handleDrawerClose,
