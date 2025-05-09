@@ -3,6 +3,7 @@ const TITLE_VARIANTS = {
   LOGIN_TITLE: 'loginTitle',
   LOGIN_SUBTITLE: 'loginSubtitle',
   REMEMBER_EMAIL: 'rememberEmail',
+  DASBOARD_TITLE: 'dashboardTitle',
 } as const;
 
 export const TITLE = {
