@@ -9,6 +9,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+
 import { sidebarOpenedProps } from './SidebarContent.types';
 import { Navigation } from './SidebarNavigation.data';
 
