@@ -1,11 +1,14 @@
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import {
   InputComponent,
   ButtonComponent,
   CheckboxComponent,
   InputLabelComponent,
+  FormInputComponent,
 } from '../../atoms';
+import { store } from '../../../redux';
+import { printPayload } from '../../../redux/login';
 
 interface IFormInput {
   email: string;
@@ -27,7 +30,10 @@ const LoginFormComponent = () => {
   });
 
   const onSubmitForm: SubmitHandler<IFormInput> = data => {
-    console.log(data);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { storeCredentials, ...userData } = data;
+    store.dispatch(printPayload(userData));
+    console.log(store.getState());
   };
 
   return (
@@ -37,7 +43,7 @@ const LoginFormComponent = () => {
     >
       <div className="flex flex-col space-y-1">
         <InputLabelComponent type="email" items="Email" />
-        <Controller
+        <FormInputComponent
           name="email"
           control={control}
           render={({ field }) => {
@@ -58,7 +64,7 @@ const LoginFormComponent = () => {
       </div>
       <div className="flex flex-col space-y-1">
         <InputLabelComponent type="password" items="Password" />
-        <Controller
+        <FormInputComponent
           name="password"
           control={control}
           render={({ field }) => {
@@ -76,7 +82,7 @@ const LoginFormComponent = () => {
             required: true,
           }}
         />
-        <Controller
+        <FormInputComponent
           name="storeCredentials"
           control={control}
           render={({ field }) => {
