@@ -35,7 +35,6 @@ const styleConfig = ({
 
     case 'email':
       return {
-        required: true,
         id: 'email',
         variant: 'outlined',
         color: 'secondary',
@@ -61,7 +60,6 @@ const styleConfig = ({
 
     case 'password':
       return {
-        required: true,
         id: 'password',
         variant: 'outlined',
         color: 'secondary',
