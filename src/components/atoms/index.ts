@@ -5,3 +5,4 @@ export * from './Button';
 export * from './Checkbox';
 export * from './InputLabel';
 export * from './FormInput';
+export * from './FormCheckbox';
