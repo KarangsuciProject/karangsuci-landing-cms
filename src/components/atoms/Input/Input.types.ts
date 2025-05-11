@@ -1,11 +1,15 @@
 import { ComponentConstants } from '../../../constants';
+import type { TextFieldProps, TextFieldVariants } from '@mui/material';
 
-export type ComponentProps = {
-  type?: (typeof ComponentConstants.INPUT.VARIANTS)[keyof typeof ComponentConstants.INPUT.VARIANTS];
-};
+export type InputComponentProps = {
+  variant?: TextFieldVariants;
+} & Omit<TextFieldProps, 'variant'> & {
+    inputType?: (typeof ComponentConstants.INPUT.VARIANTS)[keyof typeof ComponentConstants.INPUT.VARIANTS];
+    inputError?: string | undefined;
+  };
 
 export type StyleParamProps = {
-  type: ComponentProps['type'];
+  type: InputComponentProps['type'];
   showPassword: boolean;
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
 };

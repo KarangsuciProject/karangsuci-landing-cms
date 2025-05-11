@@ -1,19 +1,31 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 
-import type { ComponentProps } from './Input.types';
+import type { InputComponentProps } from './Input.types';
 import { styleConfig } from './Input.config';
 
-const InputComponent = ({ type = 'regular' }: ComponentProps) => {
+const InputComponent = ({
+  inputType = 'regular',
+  inputError,
+  ...rest
+}: InputComponentProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const styleParam = {
-    type: type,
+    type: inputType,
     showPassword: showPassword,
     setShowPassword: setShowPassword,
+    inputError: inputError,
   };
 
-  return <TextField {...styleConfig(styleParam)} />;
+  return (
+    <TextField
+      error={!!inputError}
+      helperText={inputError ? inputError : null}
+      {...styleConfig(styleParam)}
+      {...rest}
+    />
+  );
 };
 
 export default InputComponent;
