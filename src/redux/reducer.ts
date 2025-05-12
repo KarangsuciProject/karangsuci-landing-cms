@@ -1,5 +1,5 @@
-import { reducer as exampleReducer } from './exampleFeature';
+import { reducer as loginReducer } from './auth';
 
 export default {
-  example: exampleReducer,
+  auth: loginReducer,
 };
