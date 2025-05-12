@@ -8,7 +8,7 @@ import {
   FormInputComponent,
 } from '../../atoms';
 import { store } from '../../../redux';
-import { printPayload } from '../../../redux/login';
+import { authenticateUser } from '../../../redux/auth';
 
 interface IFormInput {
   email: string;
@@ -32,7 +32,7 @@ const LoginFormComponent = () => {
   const onSubmitForm: SubmitHandler<IFormInput> = data => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { storeCredentials, ...userData } = data;
-    store.dispatch(printPayload(userData));
+    store.dispatch(authenticateUser(userData));
     console.log(store.getState());
   };
 
