@@ -1,10 +1,11 @@
+import { Alert } from '@mui/material';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 import {
-  InputComponent,
   ButtonComponent,
-  CheckboxComponent,
   InputLabelComponent,
+  FormCheckboxComponent,
   FormInputComponent,
 } from '../../atoms';
 import { store } from '../../../redux';
@@ -16,12 +17,20 @@ interface IFormInput {
   storeCredentials: boolean;
 }
 
+interface AuthState {
+  auth: {
+    error: string | null;
+    user: string | null;
+    isLoggedIn: boolean;
+    loading: boolean;
+  };
+}
+
 const LoginFormComponent = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const isLoginError = (state: AuthState) => state.auth.error;
+  const loginError = useSelector(isLoginError);
+
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -32,8 +41,7 @@ const LoginFormComponent = () => {
   const onSubmitForm: SubmitHandler<IFormInput> = data => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { storeCredentials, ...userData } = data;
-    store.dispatch(authenticateUser(userData));
-    console.log(store.getState());
+    store.dispatch(authenticateUser({ ...userData }));
   };
 
   return (
@@ -46,20 +54,13 @@ const LoginFormComponent = () => {
         <FormInputComponent
           name="email"
           control={control}
-          render={({ field }) => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { ref, ...rest } = field;
-            return (
-              <InputComponent
-                {...rest}
-                inputError={errors?.email?.type}
-                type="email"
-              />
-            );
-          }}
           rules={{
-            required: true,
+            required: {
+              value: true,
+              message: 'Kolom harus diisi',
+            },
           }}
+          inputProps={{ inputType: 'email' }}
         />
       </div>
       <div className="flex flex-col space-y-1">
@@ -67,37 +68,24 @@ const LoginFormComponent = () => {
         <FormInputComponent
           name="password"
           control={control}
-          render={({ field }) => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { ref, ...rest } = field;
-            return (
-              <InputComponent
-                {...rest}
-                inputError={errors?.password?.type}
-                type="password"
-              />
-            );
-          }}
           rules={{
-            required: true,
+            required: {
+              value: true,
+              message: 'Kolom harus diisi',
+            },
+          }}
+          inputProps={{
+            inputType: 'password',
           }}
         />
-        <FormInputComponent
-          name="storeCredentials"
-          control={control}
-          render={({ field }) => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { ref, ...rest } = field;
-            return (
-              <CheckboxComponent
-                {...rest}
-                items="Ingat Email"
-                type="rememberEmail"
-              />
-            );
-          }}
-        />
+        <FormCheckboxComponent name="storeCredentials" control={control} />
       </div>
+      {loginError && (
+        <Alert variant="outlined" severity="error">
+          Login gagal. Mohon periksa kembali email dan password Anda.
+        </Alert>
+      )}
+
       <ButtonComponent items="Masuk" type="loginBtn" />
     </form>
   );

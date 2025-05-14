@@ -2,14 +2,20 @@ import { Controller, ControllerProps, FieldValues } from 'react-hook-form';
 import { CheckboxComponent } from '../Checkbox';
 import { CheckboxProps } from '../Checkbox/Checkbox.types';
 
+// Exclude the `render` prop from `ControllerProps`
+type FormCheckboxComponentProps<T extends FieldValues> = Omit<
+  ControllerProps<T>,
+  'render'
+> & {
+  checkboxProps?: CheckboxProps;
+};
+
 const FormCheckboxComponent = <T extends FieldValues>({
   name,
   control,
   rules,
   checkboxProps,
-}: ControllerProps<T> & {
-  checkboxProps: CheckboxProps;
-}) => {
+}: FormCheckboxComponentProps<T>) => {
   return (
     <Controller
       name={name}

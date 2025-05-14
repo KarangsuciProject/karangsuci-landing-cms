@@ -17,10 +17,24 @@ export const authenticateUser = createAsyncThunk(
         ...userData,
         loginSource: 'cms',
       });
-      // TO-DO set redux state after get response
-      console.log(response);
+
+      if (response.status === 200) {
+        localStorage.setItem(
+          'authToken',
+          response?.data?.tokens?.access?.token || ''
+        );
+        localStorage.setItem(
+          'refreshToken',
+          response?.data?.tokens?.refresh?.token || ''
+        );
+      }
+
+      return response.data;
     } catch (error) {
       console.error(error);
+      return _thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : error
+      );
     }
   }
 );
