@@ -1,6 +1,7 @@
 import { Alert } from '@mui/material';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   ButtonComponent,
@@ -29,6 +30,7 @@ interface AuthState {
 const LoginFormComponent = () => {
   const isLoginError = (state: AuthState) => state.auth.error;
   const loginError = useSelector(isLoginError);
+  const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -38,10 +40,15 @@ const LoginFormComponent = () => {
     },
   });
 
-  const onSubmitForm: SubmitHandler<IFormInput> = data => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { storeCredentials, ...userData } = data;
-    store.dispatch(authenticateUser({ ...userData }));
+  const onSubmitForm: SubmitHandler<IFormInput> = async data => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { storeCredentials, ...userData } = data;
+      await store.dispatch(authenticateUser({ ...userData })).unwrap();
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
