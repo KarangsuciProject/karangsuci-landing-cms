@@ -4,5 +4,9 @@ export default {
   logout: (state: LoginState) => {
     state.user = null;
     state.isLoggedIn = false;
+
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('storeCredentials');
   },
 };
