@@ -23,6 +23,7 @@ export const authSlice = createSlice({
       state.loading = false;
       state.user = action.payload.user._doc;
       state.isLoggedIn = true;
+      state.error = '';
     });
     builder.addCase(authenticateUser.rejected, (state, action) => {
       state.loading = false;
