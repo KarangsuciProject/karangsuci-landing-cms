@@ -22,11 +22,13 @@ const FormCheckboxComponent = <T extends FieldValues>({
       control={control}
       render={({ field }) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { ref, ...rest } = field;
+        const { ref, value, onChange, ...rest } = field;
         return (
           <CheckboxComponent
             {...checkboxProps}
             {...rest}
+            checked={value}
+            onChange={onChange}
             items="Ingat Email"
             type="rememberEmail"
           />
