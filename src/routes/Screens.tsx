@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import { LoginPageContainer } from '../containers';
+import { HomePageContainer, LoginPageContainer } from '../containers';
+import { MainLayout } from '../components/templates';
 
 const Router = createBrowserRouter([
   {
@@ -20,12 +21,13 @@ const Router = createBrowserRouter([
   {
     element: (
       // <ProtectedRoute />,
-      <Outlet />
+      <MainLayout />
     ),
     // errorElement: <ErrorBoundary />,
     children: [
       {
         path: '/',
+        Component: HomePageContainer,
         // errorElement: <ErrorBoundary />,
       },
     ],

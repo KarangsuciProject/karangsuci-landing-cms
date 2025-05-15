@@ -3,6 +3,7 @@ const TITLE_VARIANTS = {
   LOGIN_TITLE: 'loginTitle',
   LOGIN_SUBTITLE: 'loginSubtitle',
   REMEMBER_EMAIL: 'rememberEmail',
+  DASBOARD_TITLE: 'dashboardTitle',
 } as const;
 
 export const TITLE = {
@@ -45,3 +46,5 @@ const INPUT_LABEL_VARIANTS = {
 export const INPUT_LABEL = {
   VARIANTS: INPUT_LABEL_VARIANTS,
 };
+
+export const DRAWER_WIDTH = 240 as const;
