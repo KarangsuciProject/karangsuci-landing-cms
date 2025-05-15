@@ -2,8 +2,7 @@ import { createTheme } from '@mui/material/styles';
 
 import { PaletteConstant } from '../constants';
 
-const { primary, secondary, textPrimary, textSecondary } =
-  PaletteConstant.colors;
+const { primary, secondary } = PaletteConstant.colors;
 
 const theme = createTheme({
   palette: {
@@ -13,10 +12,6 @@ const theme = createTheme({
     },
     secondary: {
       main: secondary.main,
-    },
-    text: {
-      primary: textPrimary.main,
-      secondary: textSecondary.main,
     },
   },
   typography: {

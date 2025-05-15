@@ -3,15 +3,18 @@ import axios from 'axios';
 
 const requestURL = `${import.meta.env.VITE_DEV_BACKEND_API_URL}/auth/login`;
 
-interface UserData {
+interface LoginData {
   email: string;
   password: string;
+  storeCredentials: boolean;
 }
 
 export const authenticateUser = createAsyncThunk(
   'auth/userLogin',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async (userData: UserData, _thunkAPI) => {
+  async (data: LoginData, _thunkAPI) => {
+    const { storeCredentials, ...userData } = data;
+
     try {
       const response = await axios.post(requestURL, {
         ...userData,
@@ -26,6 +29,10 @@ export const authenticateUser = createAsyncThunk(
         localStorage.setItem(
           'refreshToken',
           response?.data?.tokens?.refresh?.token || ''
+        );
+        localStorage.setItem(
+          'storeCredentials',
+          storeCredentials.toString() || 'false'
         );
       }
 

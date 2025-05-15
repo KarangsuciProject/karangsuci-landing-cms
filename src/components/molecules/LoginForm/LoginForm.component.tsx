@@ -43,8 +43,7 @@ const LoginFormComponent = () => {
   const onSubmitForm: SubmitHandler<IFormInput> = async data => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { storeCredentials, ...userData } = data;
-      await store.dispatch(authenticateUser({ ...userData })).unwrap();
+      await store.dispatch(authenticateUser(data)).unwrap();
       navigate('/');
     } catch (error) {
       console.error(error);

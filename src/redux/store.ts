@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 
 import rootReducer from './reducer';
@@ -21,3 +21,5 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
+
+export const persistor = persistStore(store);
