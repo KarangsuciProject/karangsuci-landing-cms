@@ -28,8 +28,8 @@ interface AuthState {
 }
 
 const LoginFormComponent = () => {
-  const isLoginError = (state: AuthState) => state.auth.error;
-  const loginError = useSelector(isLoginError);
+  const loginError = useSelector((state: AuthState) => state.auth.error);
+  const isLoading = useSelector((state: AuthState) => state.auth.loading);
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm({
@@ -92,7 +92,7 @@ const LoginFormComponent = () => {
         </Alert>
       )}
 
-      <ButtonComponent items="Masuk" type="loginBtn" />
+      <ButtonComponent items="Masuk" type="loginBtn" loading={isLoading} />
     </form>
   );
 };
