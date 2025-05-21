@@ -9,6 +9,7 @@ const styleConfig: styleConfigProps = {
     variant: 'contained',
     color: 'primary',
     size: 'large',
+    type: 'submit',
   },
 };
 

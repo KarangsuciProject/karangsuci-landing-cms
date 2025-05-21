@@ -8,12 +8,21 @@ import type { styleParamProps } from './Checkbox.types';
 const styleConfig = ({
   type,
   items,
+  checked,
+  onChange,
 }: styleParamProps): FormControlLabelProps => {
   switch (type) {
     case 'rememberEmail':
       return {
         className: 'self-start',
-        control: <Checkbox color="secondary" size="small" />,
+        control: (
+          <Checkbox
+            color="secondary"
+            size="small"
+            checked={checked}
+            onChange={onChange}
+          />
+        ),
         label: <Title items={items} type="rememberEmail" />,
       };
 

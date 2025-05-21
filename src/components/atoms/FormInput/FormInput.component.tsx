@@ -1,15 +1,15 @@
-import { Controller, ControllerProps, FieldValues } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
+
+import { FormInputComponentProps } from './FormInput.types';
+
 import { InputComponent } from '../Input';
-import { InputComponentProps } from '../Input/Input.types';
 
 const FormInputComponent = <T extends FieldValues>({
   name,
   control,
   rules,
   inputProps,
-}: ControllerProps<T> & {
-  inputProps: InputComponentProps;
-}) => {
+}: FormInputComponentProps<T>) => {
   return (
     <Controller
       name={name}
@@ -21,8 +21,7 @@ const FormInputComponent = <T extends FieldValues>({
           <InputComponent
             {...inputProps}
             {...rest}
-            inputError={formState?.errors?.email?.type as string}
-            inputType="email"
+            inputError={formState?.errors?.[name]?.message as string}
           />
         );
       }}

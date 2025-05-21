@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Avatar,
   Box,
@@ -6,15 +7,26 @@ import {
   MenuItem,
   Tooltip,
 } from '@mui/material';
-import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { store } from '../../../../redux';
+import { logout } from '../../../../redux/auth';
 
 const AvatarNavbar = () => {
   const [anchorUser, setAnchorUser] = React.useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
+
   const handleOpenUser = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorUser(event.currentTarget);
   };
+
   const handleCloseUser = () => {
     setAnchorUser(null);
+  };
+
+  const handleLogout = () => {
+    store.dispatch(logout());
+    navigate('/login');
   };
 
   return (
@@ -48,7 +60,7 @@ const AvatarNavbar = () => {
         }}
       >
         <MenuItem onClick={handleCloseUser}>Settings</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </Box>
   );
