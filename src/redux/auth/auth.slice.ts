@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import reducers from './auth.reducers';
 import { authenticateUser } from './auth.action';
-import type { LoginState } from './auth.types';
+import type { ILoginState } from './auth.types';
 
-const initialState: LoginState = {
+const initialState: ILoginState = {
   user: null,
   isLoggedIn: false,
   loading: false,
@@ -24,6 +24,19 @@ export const authSlice = createSlice({
       state.user = action.payload.user._doc;
       state.isLoggedIn = true;
       state.error = '';
+
+      localStorage.setItem(
+        'authToken',
+        action.payload?.tokens?.access?.token || ''
+      );
+      localStorage.setItem(
+        'refreshToken',
+        action.payload?.tokens?.refresh?.token || ''
+      );
+      localStorage.setItem(
+        'isStoreCredentials',
+        action.payload?.isStoreCredentials.toString() || 'false'
+      );
     });
     builder.addCase(authenticateUser.rejected, (state, action) => {
       state.loading = false;
@@ -37,5 +50,4 @@ export const authSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { logout } = authSlice.actions;
-
 export const { reducer } = authSlice;

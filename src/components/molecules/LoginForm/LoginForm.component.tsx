@@ -12,38 +12,26 @@ import {
 import { store } from '../../../redux';
 import { authenticateUser } from '../../../redux/auth';
 
-interface IFormInput {
-  email: string;
-  password: string;
-  storeCredentials: boolean;
-}
-
-interface AuthState {
-  auth: {
-    error: string | null;
-    user: string | null;
-    isLoggedIn: boolean;
-    loading: boolean;
-  };
-}
+import { IFormInput, IAuthState } from './LoginForm.types';
 
 const LoginFormComponent = () => {
-  const loginError = useSelector((state: AuthState) => state.auth.error);
-  const isLoading = useSelector((state: AuthState) => state.auth.loading);
+  const loginError = useSelector((state: IAuthState) => state.auth.error);
+  const isLoading = useSelector((state: IAuthState) => state.auth.loading);
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
       password: '',
-      storeCredentials: false,
+      isStoreCredentials: false,
     },
   });
 
   const onSubmitForm: SubmitHandler<IFormInput> = async data => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      await store.dispatch(authenticateUser(data)).unwrap();
+      const response = await store.dispatch(authenticateUser(data)).unwrap();
+
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -84,7 +72,7 @@ const LoginFormComponent = () => {
             inputType: 'password',
           }}
         />
-        <FormCheckboxComponent name="storeCredentials" control={control} />
+        <FormCheckboxComponent name="isStoreCredentials" control={control} />
       </div>
       {loginError && (
         <Alert variant="outlined" severity="error">

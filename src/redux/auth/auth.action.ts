@@ -1,42 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const requestURL = `${import.meta.env.VITE_DEV_BACKEND_API_URL}/auth/login`;
+import { ILoginData } from './auth.types';
 
-interface LoginData {
-  email: string;
-  password: string;
-  storeCredentials: boolean;
-}
+const requestURL = `${import.meta.env.VITE_DEV_BACKEND_API_URL}/auth/login`;
 
 export const authenticateUser = createAsyncThunk(
   'auth/userLogin',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async (data: LoginData, _thunkAPI) => {
-    const { storeCredentials, ...userData } = data;
+  async (data: ILoginData, _thunkAPI) => {
+    const { email, password } = data;
 
     try {
       const response = await axios.post(requestURL, {
-        ...userData,
+        email: email,
+        password: password,
         loginSource: 'cms',
       });
 
-      if (response.status === 200) {
-        localStorage.setItem(
-          'authToken',
-          response?.data?.tokens?.access?.token || ''
-        );
-        localStorage.setItem(
-          'refreshToken',
-          response?.data?.tokens?.refresh?.token || ''
-        );
-        localStorage.setItem(
-          'storeCredentials',
-          storeCredentials.toString() || 'false'
-        );
-      }
-
-      return response.data;
+      return { ...response.data, isStoreCredentials: data.isStoreCredentials };
     } catch (error) {
       console.error(error);
       return _thunkAPI.rejectWithValue(
