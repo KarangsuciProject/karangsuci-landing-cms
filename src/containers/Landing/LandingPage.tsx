@@ -16,12 +16,15 @@ const LandingPage = () => {
       <Title items="Edit Data Landing" type="headerTitle" />
       <Typography variant="body1">
         Ini merupakan tempat untuk mengedit data landing. Silakan lakukan
-        perubahan sesuai kebutuhan Anda.
+        perubahan sesuai kebutuhan Anda. Data yang diubah akan disimpan secara
+        otomatis dan dapat dilihat di halaman landing.
       </Typography>
-      <HeroData />
-      <ProfileData />
-      <QuoteData />
-      <FooterData />
+      <div className={styleConfig.container}>
+        <HeroData />
+        <ProfileData />
+        <QuoteData />
+        <FooterData />
+      </div>
     </section>
   );
 };
