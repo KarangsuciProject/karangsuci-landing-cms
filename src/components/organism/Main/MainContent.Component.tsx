@@ -4,7 +4,7 @@ import StyledMain from './MainContent.styled';
 
 const MainContent = ({ open, children }: MainContentProps) => {
   return (
-    <Box>
+    <Box className="w-screen">
       <StyledMain open={open} sx={{ marginLeft: '15px' }}>
         <Toolbar />
         {children}
