@@ -17,8 +17,27 @@ const styleConfig = ({
   switch (type) {
     case 'regular':
       return {
-        label: 'Outlined',
         variant: 'outlined',
+        color: 'secondary',
+        slotProps: {
+          input: {
+            sx: {
+              fontSize: {
+                xs: '14px',
+                sm: '16px',
+                md: '18px',
+                lg: '20px',
+              },
+            },
+          },
+        },
+      };
+
+    case 'file':
+      return {
+        type: 'file',
+        variant: 'outlined',
+        color: 'secondary',
         slotProps: {
           input: {
             sx: {
@@ -84,12 +103,12 @@ const styleConfig = ({
               <InputAdornment position="end">
                 {showPassword ? (
                   <EyeIcon
-                    className="size-5 cursor-pointer"
+                    className="cursor-pointer size-5"
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 ) : (
                   <EyeSlashIcon
-                    className="size-5 cursor-pointer"
+                    className="cursor-pointer size-5"
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 )}

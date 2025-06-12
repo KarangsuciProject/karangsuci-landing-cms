@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { TextField } from '@mui/material';
+import {
+  FormControl,
+  FormHelperText,
+  Input,
+  InputLabel,
+  TextField,
+} from '@mui/material';
 
 import type { InputComponentProps } from './Input.types';
 import { styleConfig } from './Input.config';
@@ -7,6 +13,7 @@ import { styleConfig } from './Input.config';
 const InputComponent = ({
   inputType = 'regular',
   inputError,
+  label,
   ...rest
 }: InputComponentProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,12 +25,31 @@ const InputComponent = ({
     inputError: inputError,
   };
 
+  if (rest.type === 'file') {
+    return (
+      <FormControl error={!!inputError} fullWidth>
+        {label && <InputLabel shrink>{label}</InputLabel>}
+        <Input
+          type="file"
+          inputRef={rest.inputRef}
+          inputProps={{
+            accept: rest.accept,
+          }}
+          onChange={rest.onChange}
+        />
+        <FormHelperText>{inputError}</FormHelperText>
+      </FormControl>
+    );
+  }
+
   return (
     <TextField
+      multiline
+      fullWidth
       error={!!inputError}
-      helperText={inputError ? inputError : null}
-      {...styleConfig(styleParam)}
+      helperText={inputError ? inputError : ''}
       {...rest}
+      {...styleConfig(styleParam)}
     />
   );
 };
