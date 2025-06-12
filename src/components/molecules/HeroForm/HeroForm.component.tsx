@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Alert, Typography } from '@mui/material';
 
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch } from '../../../redux';
 import { addHeroData } from '../../../redux/LandingSlice';
 import {
   ButtonComponent,
