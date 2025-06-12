@@ -3,3 +3,7 @@ export * from './LoginRight';
 export * from './Navbar';
 export * from './Sidebar';
 export * from './Main';
+export * from './HeroData';
+export * from './ProfileData';
+export * from './QuoteData';
+export * from './FooterData';
