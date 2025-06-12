@@ -1,8 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
+import { useDispatch } from 'react-redux';
 import storage from 'redux-persist/es/storage';
 
 import rootReducer from './reducer';
+
+import type { AppDispatch } from './store.type';
 
 const persistConfig = {
   key: 'root',
@@ -21,5 +24,7 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export const persistor = persistStore(store);
