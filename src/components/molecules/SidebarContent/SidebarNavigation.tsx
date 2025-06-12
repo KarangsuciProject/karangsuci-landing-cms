@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+
 import {
   Collapse,
   List,
@@ -10,7 +12,7 @@ import {
   ListItemText,
 } from '@mui/material';
 
-import { sidebarOpenedProps } from './SidebarContent.types';
+import { NavType, sidebarOpenedProps } from './SidebarContent.types';
 import { Navigation } from './SidebarNavigation.data';
 
 const SidebarNavigation = ({
@@ -20,15 +22,39 @@ const SidebarNavigation = ({
   const [selectedIndex, setSelectedIndex] = useState<string>('');
   const [openMap, setOpenMap] = useState<{ [key: number]: boolean }>({});
 
+  const navigate = useNavigate();
+
+  const findPathBySegment = (
+    items: { segment: string; path?: string; children?: NavType[] }[],
+    segment: string
+  ): string | null => {
+    for (const item of items) {
+      if (item.children && item.children.length > 0) {
+        const result = findPathBySegment(item.children, segment);
+        if (result) return result;
+      }
+
+      if (item.segment.toLowerCase() === segment.toLowerCase() && item.path) {
+        return item.path;
+      }
+    }
+    return null;
+  };
   const handleListItemClick = (event: React.MouseEvent, key: string) => {
     event.preventDefault();
-    setSelectedIndex(key);
+
+    const path = findPathBySegment(Navigation, key);
+
+    if (path && path !== '#') {
+      navigate(path);
+      setSelectedIndex(key);
+    }
   };
   const handleToggle = (id: number) => {
     setOpenMap(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const renderChildren = (children: any[], parentId: number) => {
+  const renderChildren = (children: NavType[], parentId: number) => {
     return (
       <Collapse
         in={(isDrawerOpen || isMobileOpen) && openMap[parentId]}
@@ -36,11 +62,11 @@ const SidebarNavigation = ({
         unmountOnExit
       >
         <List component="div" disablePadding>
-          {children.map((child, childId) => {
-            const childKey = `child-${parentId}-${childId}`;
+          {children.map(child => {
+            const childKey = child.segment;
             return (
               <ListItemButton
-                key={childId}
+                key={childKey}
                 sx={{ pl: 4 }}
                 onClick={e => {
                   handleListItemClick(e, childKey);
@@ -57,10 +83,10 @@ const SidebarNavigation = ({
     );
   };
 
-  const renderParent = (data: any, id: number) => {
+  const renderParent = (data: NavType, id: number) => {
     const hasChildren =
       Array.isArray(data.children) && data.children.length > 0;
-    const parentKey = `parent-${id}`;
+    const parentKey = data.segment;
     const isOpen = openMap[id] || false;
 
     return (
@@ -71,7 +97,7 @@ const SidebarNavigation = ({
             onClick={
               hasChildren
                 ? () => handleToggle(id)
-                : event => handleListItemClick(event, parentKey)
+                : event => handleListItemClick(event, data.segment)
             }
             sx={{
               minHeight: 48,
@@ -88,7 +114,7 @@ const SidebarNavigation = ({
           </ListItemButton>
         </ListItem>
 
-        {hasChildren && renderChildren(data.children, id)}
+        {hasChildren && renderChildren(data.children!, id)}
       </div>
     );
   };
