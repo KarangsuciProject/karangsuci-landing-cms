@@ -1,8 +1,8 @@
 import { reducer as loginReducer } from './auth';
-import heroDataSlice from './LandingSlice/heroData.slice';
-import profileDataSlice from './LandingSlice/profileData.slice';
-import quoteDataSlice from './LandingSlice/quoteData.slice';
-import footerDataSlice from './LandingSlice/footerData.slice';
+import heroDataSlice from './LandingSlice/heroData/heroData.slice';
+import profileDataSlice from './LandingSlice/profileData/profileData.slice';
+import quoteDataSlice from './LandingSlice/quoteData/quoteData.slice';
+import footerDataSlice from './LandingSlice/footerData/footerData.slice';
 
 export default {
   auth: loginReducer,

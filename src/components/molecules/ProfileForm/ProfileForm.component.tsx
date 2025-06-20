@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Alert } from '@mui/material';
 
 import { useAppDispatch } from '../../../redux';
-import { addProfileData } from '../../../redux/LandingSlice/profileData.slice';
+import { addProfileData } from '../../../redux/LandingSlice/profileData/profileData.slice';
 import {
   ButtonComponent,
   FormInputComponent,

@@ -1,30 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { supabase } from '../../utils/supabase';
+import { supabase } from '../../../utils';
+import { heroFormValues } from '../../../components/molecules/HeroForm/HeroForm.types';
 
-import { heroFormValues } from '../../components/molecules/HeroForm/HeroForm.types';
-
-interface heroData {
-  id: number;
-  hero_title: string;
-  hero_subtitle: string;
-  hero_url: string;
-  hero_bg_url: string;
-}
-
-interface heroDataState {
-  data: heroData[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
-}
-
-const initialState: heroDataState = {
-  data: [],
-  status: 'idle',
-  error: null,
-};
-
-const addHeroData = createAsyncThunk(
+export const addHeroData = createAsyncThunk(
   'heroData/addHeroData',
   async (heroData: heroFormValues, thunkAPI) => {
     try {
@@ -77,29 +56,3 @@ const addHeroData = createAsyncThunk(
     }
   }
 );
-
-const heroDataSlice = createSlice({
-  name: 'heroData',
-  initialState,
-  reducers: {},
-  extraReducers(builder) {
-    builder
-      .addCase(addHeroData.pending, state => {
-        state.status = 'loading';
-      })
-      .addCase(
-        addHeroData.fulfilled,
-        (state, action: PayloadAction<heroData>) => {
-          state.status = 'succeeded';
-          state.data.push(action.payload);
-        }
-      )
-      .addCase(addHeroData.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload as string;
-      });
-  },
-});
-
-export { addHeroData };
-export default heroDataSlice.reducer;

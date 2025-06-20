@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Alert } from '@mui/material';
 
 import { useAppDispatch } from '../../../redux';
-import { addQuoteData } from '../../../redux/LandingSlice/quoteData.slice';
+import addQuoteData from '../../../redux/LandingSlice/quoteData/quoteData.action';
 import {
   ButtonComponent,
   FormInputComponent,
