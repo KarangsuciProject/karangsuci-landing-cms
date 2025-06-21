@@ -84,6 +84,8 @@ const HeroForm = () => {
           inputProps={{
             inputType: 'regular',
             placeholder: 'Hero Title',
+            multiline: true,
+            fullWidth: true,
           }}
         />
         <InputLabelComponent type="regular" items="Sub Hero Title" />
@@ -99,6 +101,8 @@ const HeroForm = () => {
           inputProps={{
             inputType: 'regular',
             placeholder: 'Sub Hero Title',
+            multiline: true,
+            fullWidth: true,
           }}
         />
         <InputLabelComponent type="regular" items="Url" />
@@ -114,6 +118,8 @@ const HeroForm = () => {
           inputProps={{
             inputType: 'regular',
             placeholder: 'Link Url Button',
+            multiline: true,
+            fullWidth: true,
           }}
         />
         <InputLabelComponent type="regular" items="File Image" />
