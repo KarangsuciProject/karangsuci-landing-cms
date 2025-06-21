@@ -10,7 +10,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import { store } from '../../../../redux';
-import { logout } from '../../../../redux/auth';
+import { logoutUser } from '../../../../redux/auth';
 
 const AvatarNavbar = () => {
   const [anchorUser, setAnchorUser] = React.useState<null | HTMLElement>(null);
@@ -24,8 +24,8 @@ const AvatarNavbar = () => {
     setAnchorUser(null);
   };
 
-  const handleLogout = () => {
-    store.dispatch(logout());
+  const handleLogout = async () => {
+    await store.dispatch(logoutUser()).unwrap();
     navigate('/login');
   };
 

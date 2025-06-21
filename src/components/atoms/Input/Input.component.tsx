@@ -44,8 +44,6 @@ const InputComponent = ({
 
   return (
     <TextField
-      multiline
-      fullWidth
       error={!!inputError}
       helperText={inputError ? inputError : ''}
       {...rest}
