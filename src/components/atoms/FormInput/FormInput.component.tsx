@@ -16,11 +16,22 @@ const FormInputComponent = <T extends FieldValues>({
       control={control}
       render={({ field, formState }) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { ref, ...rest } = field;
+        const { ref, ...restField } = field;
+        const isFileInput = inputProps?.type === 'file';
         return (
           <InputComponent
             {...inputProps}
-            {...rest}
+            {...restField}
+            inputRef={ref}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              if (isFileInput) {
+                const files = e.target.files;
+                restField.onChange(files);
+                inputProps?.onChange?.(e);
+              } else {
+                restField.onChange(e);
+              }
+            }}
             inputError={formState?.errors?.[name]?.message as string}
           />
         );

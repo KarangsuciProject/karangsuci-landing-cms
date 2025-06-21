@@ -3,7 +3,8 @@ const TITLE_VARIANTS = {
   LOGIN_TITLE: 'loginTitle',
   LOGIN_SUBTITLE: 'loginSubtitle',
   REMEMBER_EMAIL: 'rememberEmail',
-  DASBOARD_TITLE: 'dashboardTitle',
+  HEADER_TITLE: 'headerTitle',
+  SUB_HEADER_TITLE: 'subHeaderTitle',
 } as const;
 
 export const TITLE = {
@@ -14,6 +15,7 @@ const INPUT_VARIANTS = {
   REGULAR: 'regular',
   EMAIL: 'email',
   PASSWORD: 'password',
+  FILE: 'file',
 } as const;
 
 export const INPUT = {
@@ -41,6 +43,7 @@ const INPUT_LABEL_VARIANTS = {
   REGULAR: 'regular',
   EMAIL: 'email',
   PASSWORD: 'password',
+  FILE: 'file',
 } as const;
 
 export const INPUT_LABEL = {

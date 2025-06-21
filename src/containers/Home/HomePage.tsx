@@ -7,7 +7,7 @@ import { styleConfig } from './HomePage.styles';
 function HomePage() {
   return (
     <section className={styleConfig.homepageContainer}>
-      <Title items="Dashboard" type="dashboardTitle" />
+      <Title items="Dashboard" type="headerTitle" />
       <Typography variant="body1">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo quaerat
         saepe suscipit, eveniet ipsum dolor ullam nihil impedit. Consequatur

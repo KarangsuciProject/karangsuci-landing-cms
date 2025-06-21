@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 type Props = {
   handleDrawerClose?: () => void;
   isDrawerOpen?: boolean;
@@ -9,4 +11,12 @@ type sidebarOpenedProps = {
   isMobileOpen: boolean;
 };
 
-export type { Props, sidebarOpenedProps };
+type NavType = {
+  segment: string;
+  name: string;
+  icon: ReactNode;
+  path?: string;
+  children?: NavType[];
+};
+
+export type { Props, sidebarOpenedProps, NavType };

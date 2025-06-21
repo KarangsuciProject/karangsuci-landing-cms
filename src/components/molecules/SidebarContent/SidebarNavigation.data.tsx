@@ -6,13 +6,14 @@ import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import WebStoriesIcon from '@mui/icons-material/WebStories';
 import AppsIcon from '@mui/icons-material/Apps';
 import FeedIcon from '@mui/icons-material/Feed';
+import { NavType } from './SidebarContent.types';
 
-const Navigation = [
+const Navigation: NavType[] = [
   {
     segment: 'dashboard',
     name: 'Dashboard',
     icon: <DashboardIcon />,
-    path: '#',
+    path: '/',
   },
   {
     segment: 'content',
@@ -23,10 +24,10 @@ const Navigation = [
         segment: 'Landing',
         name: 'Landing',
         icon: <DesktopWindowsIcon />,
-        path: '#',
+        path: '/landing',
       },
       {
-        segment: 'visi&misi',
+        segment: 'Visi & Misi',
         name: 'Visi & Misi',
         icon: <FlagCircleIcon />,
         path: '#',
