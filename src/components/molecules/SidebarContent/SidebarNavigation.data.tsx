@@ -30,7 +30,7 @@ const Navigation: NavType[] = [
         segment: 'Visi & Misi',
         name: 'Visi & Misi',
         icon: <FlagCircleIcon />,
-        path: '#',
+        path: '/visimisi',
       },
       {
         segment: 'lembaga',

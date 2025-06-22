@@ -4,6 +4,7 @@ import {
   HomePageContainer,
   LandingPageContainer,
   LoginPageContainer,
+  VisionMissionContainer,
 } from '../containers';
 import { MainLayout } from '../components/templates';
 import ProtectedRoute from './ProtectedRoute.component';
@@ -38,19 +39,14 @@ const Router = createBrowserRouter([
         Component: HomePageContainer,
         // errorElement: <ErrorBoundary />,
       },
-    ],
-  },
-  {
-    element: (
-      <ProtectedRoute>
-        <MainLayout />
-      </ProtectedRoute>
-    ),
-    // errorElement: <ErrorBoundary />,
-    children: [
       {
         path: '/landing',
         Component: LandingPageContainer,
+        // errorElement: <ErrorBoundary />,
+      },
+      {
+        path: '/visimisi',
+        Component: VisionMissionContainer,
         // errorElement: <ErrorBoundary />,
       },
     ],
