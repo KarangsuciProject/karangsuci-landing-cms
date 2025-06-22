@@ -1,3 +1,0 @@
-const styleConfig = {};
-
-export { styleConfig };

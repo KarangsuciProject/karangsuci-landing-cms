@@ -7,3 +7,4 @@ export * from './HeroData';
 export * from './ProfileData';
 export * from './QuoteData';
 export * from './FooterData';
+export * from './VisiMisiContent';

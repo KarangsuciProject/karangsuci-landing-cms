@@ -6,3 +6,5 @@ export * from './HeroForm';
 export * from './ProfileForm';
 export * from './QuoteForm';
 export * from './FooterForm';
+export * from './VisiContentForm';
+export * from './MisiContentForm';
