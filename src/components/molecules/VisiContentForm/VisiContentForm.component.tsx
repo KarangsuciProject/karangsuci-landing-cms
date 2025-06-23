@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 
 import { styleConfig } from './VisiContentForm.config';
 
-import { FormInputComponent, ButtonComponent } from '../../atoms';
+import { FormInputComponent, ButtonComponent, Title } from '../../atoms';
 
 const VisiContentForm = () => {
   const { control } = useForm({
@@ -15,6 +15,7 @@ const VisiContentForm = () => {
 
   return (
     <form className={styleConfig.formWrapper}>
+      <Title items="Visi" type="formHeader" />
       <FormInputComponent
         name="visi1"
         control={control}

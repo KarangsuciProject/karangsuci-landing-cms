@@ -1,5 +1,3 @@
-import { Typography } from '@mui/material';
-
 import { styleConfig } from './VisionMission.config';
 
 import { Title } from '../../components/atoms';
@@ -10,10 +8,11 @@ const VisionMision = () => {
     <section className={styleConfig.wrapper}>
       <div>
         <Title items="Visi & Misi Content" type="headerTitle" />
-        <Typography variant="body1">
-          Silakan lakukan perubahan sesuai kebutuhan Anda. Data yang diubah akan
-          disimpan secara otomatis dan dapat dilihat di halaman Visi & Misi.
-        </Typography>
+        <Title
+          items="Silakan lakukan perubahan sesuai kebutuhan Anda. Data yang diubah akan
+          disimpan secara otomatis dan dapat dilihat di halaman Visi & Misi."
+          type="subHeaderTitle"
+        />
       </div>
       <div className={styleConfig.container}>
         <VisiMisiContent />

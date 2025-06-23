@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 
 import { styleConfig } from './MisiContentForm.config';
 
-import { FormInputComponent, ButtonComponent } from '../../atoms';
+import { FormInputComponent, ButtonComponent, Title } from '../../atoms';
 import { store } from '../../../redux';
 
 const MisiContentForm = () => {
@@ -16,6 +16,7 @@ const MisiContentForm = () => {
 
   return (
     <form className={styleConfig.formWrapper}>
+      <Title items="Misi" type="formHeader" />
       <FormInputComponent
         name="misi1"
         control={control}

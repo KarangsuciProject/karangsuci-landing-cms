@@ -5,6 +5,7 @@ const TITLE_VARIANTS = {
   REMEMBER_EMAIL: 'rememberEmail',
   HEADER_TITLE: 'headerTitle',
   SUB_HEADER_TITLE: 'subHeaderTitle',
+  FORM_HEADER: 'formHeader',
 } as const;
 
 export const TITLE = {
