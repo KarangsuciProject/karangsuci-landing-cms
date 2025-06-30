@@ -4,6 +4,7 @@ export const colors = {
   },
   secondary: {
     main: '#00A765',
+    lightBlue: '#90CAF9',
   },
   textPrimary: {
     main: '#000000',

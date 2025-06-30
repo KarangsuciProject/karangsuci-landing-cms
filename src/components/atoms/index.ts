@@ -6,3 +6,5 @@ export * from './Checkbox';
 export * from './InputLabel';
 export * from './FormInput';
 export * from './FormCheckbox';
+export * from './FileUploader';
+export * from './FormInputFile';

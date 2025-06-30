@@ -1,8 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { styleConfig } from './VisiContentForm.config';
-import { IFormInput } from './VisiContentForm.types';
-
 import {
   FormInputComponent,
   FormInputFile,
@@ -10,15 +7,18 @@ import {
   Title,
 } from '../../atoms';
 
-const VisiContentForm = () => {
+import { IFormInput } from './MisiContentForm.types';
+import { styleConfig } from './MisiContentForm.config';
+
+const MisiContentForm = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      visionText1: '',
-      visionIcon1: null,
-      visionText2: '',
-      visionIcon2: null,
-      visionText3: '',
-      visionIcon3: null,
+      missionText1: '',
+      missionIcon1: '',
+      missionText2: '',
+      missionIcon2: '',
+      missionText3: '',
+      missionIcon3: '',
     },
   });
 
@@ -35,10 +35,10 @@ const VisiContentForm = () => {
       className={styleConfig.formWrapper}
       onSubmit={handleSubmit(onSubmitForm)}
     >
-      <Title items="Visi" type="formHeader" />
+      <Title items="Misi" type="formHeader" />
       <div className={styleConfig.inputWrapper}>
         <FormInputComponent
-          name="visionText1"
+          name="missionText1"
           control={control}
           rules={{
             required: {
@@ -54,14 +54,14 @@ const VisiContentForm = () => {
         />
         <FormInputFile
           items="Unggah Icon"
-          name="visionIcon1"
+          name="missionIcon1"
           control={control}
           acceptedFile="image/png, image/jpg, image/jpeg"
         />
       </div>
       <div className={styleConfig.inputWrapper}>
         <FormInputComponent
-          name="visionText2"
+          name="missionText2"
           control={control}
           rules={{
             required: {
@@ -77,14 +77,14 @@ const VisiContentForm = () => {
         />
         <FormInputFile
           items="Unggah Icon"
-          name="visionIcon2"
+          name="missionIcon2"
           control={control}
           acceptedFile="image/png, image/jpg, image/jpeg"
         />
       </div>
       <div className={styleConfig.inputWrapper}>
         <FormInputComponent
-          name="visionText3"
+          name="missionText3"
           control={control}
           rules={{
             required: {
@@ -100,7 +100,7 @@ const VisiContentForm = () => {
         />
         <FormInputFile
           items="Unggah Icon"
-          name="visionIcon3"
+          name="missionIcon3"
           control={control}
           acceptedFile="image/png, image/jpg, image/jpeg"
         />
@@ -110,4 +110,4 @@ const VisiContentForm = () => {
   );
 };
 
-export default VisiContentForm;
+export default MisiContentForm;

@@ -49,14 +49,15 @@ const HeroForm = () => {
   }, [previewImage]);
 
   const onSubmitForm = async (data: heroFormValues) => {
-    setLoading(true);
-    const res = await dispatch(addHeroData(data));
-    if (addHeroData.fulfilled.match(res)) {
-      setStatusMessage('success');
-    } else {
-      setStatusMessage('error');
-    }
-    setLoading(false);
+    // setLoading(true);
+    // const res = await dispatch(addHeroData(data));
+    // if (addHeroData.fulfilled.match(res)) {
+    //   setStatusMessage('success');
+    // } else {
+    //   setStatusMessage('error');
+    // }
+    // setLoading(false);
+    console.log(data);
   };
 
   return (

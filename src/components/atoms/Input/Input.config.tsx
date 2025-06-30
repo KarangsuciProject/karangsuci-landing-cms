@@ -28,9 +28,7 @@ const styleConfig = ({
                 md: '18px',
                 lg: '20px',
               },
-              '& .MuiInputBase-input': {
-                padding: '12px', // Adjust padding here
-              },
+              '& .MuiInputBase-input': {},
             },
           },
         },
