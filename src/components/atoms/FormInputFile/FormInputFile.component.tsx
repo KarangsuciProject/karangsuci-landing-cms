@@ -15,11 +15,9 @@ const FormInputFile = <T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, formState }) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { ref, onChange, ...rest } = field;
+        const { onChange } = field;
         return (
           <FileUploader
-            {...rest}
             items={items}
             onChange={onChange}
             acceptedFile={acceptedFile}

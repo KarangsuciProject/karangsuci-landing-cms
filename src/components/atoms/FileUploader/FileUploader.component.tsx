@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, styled, Typography } from '@mui/material';
 import { CloudUpload } from '@mui/icons-material';
 
@@ -16,16 +16,19 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-const FileUploader = ({
-  items,
-  acceptedFile,
-  onChange,
-  ...rest
-}: FileUploaderProps) => {
-  const [filename, setFilename] = useState<string>('');
+const FileUploader = ({ items, acceptedFile, onChange }: FileUploaderProps) => {
+  const [filename, setFilename] = useState('');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      setFilename(files[0].name);
+      onChange(files);
+    }
+  };
 
   return (
-    <div>
+    <div className="flex items-center gap-4">
       <Button
         component="label"
         role={undefined}
@@ -37,11 +40,10 @@ const FileUploader = ({
         <VisuallyHiddenInput
           type="file"
           accept={acceptedFile}
-          // {...rest}
-          onChange={event => onChange(event.target.files)}
+          onChange={event => handleChange(event)}
         />
       </Button>
-      <Typography></Typography>
+      <Typography>{filename}</Typography>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 export type FileUploaderProps = {
   items: string;
   acceptedFile: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: FileList) => void;
   inputError?: string | undefined;
 };
