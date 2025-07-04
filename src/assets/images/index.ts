@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+import LogoTransparent from './LogoTransparent.png';
+import Background from './background.png';
 
 const Images = {
-  LogoTransparent: require('./LogoTransparent.png'),
-  Background: require('./background.png'),
+  LogoTransparent: LogoTransparent,
+  Background: Background,
 };
 
 export default Images;
